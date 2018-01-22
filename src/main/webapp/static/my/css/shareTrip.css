@@ -1,0 +1,341 @@
+body, html {
+	height: 100%;
+	position: relative
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "pingfang sc", STHeiti, Microsoft YaHei, Helvetica, Arial,
+		sans-serif;
+	-webkit-tap-highlight-color: transparent
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+:after, :before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+.fl {
+	float: left
+}
+
+.fr {
+	float: right
+}
+
+.clearfix:after {
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0
+}
+
+a {
+	text-decoration: none
+}
+
+html {
+	font-size: 100px
+}
+
+body {
+	max-width: 750px;
+	font-size: .24rem;
+	margin: 0 auto;
+	background: #f0f1f1
+}
+
+section {
+	position: relative
+}
+
+[class*=ficon-]:before {
+	content: "";
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center
+}
+
+.ficon-qi:before {
+	width: .34rem;
+	height: .34rem;
+	background-image: url(../img/iconqi.png);
+	vertical-align: middle;
+	margin-right: .15rem;
+	background-size: 100% auto;
+	position: relative;
+	top: -1px
+}
+
+.ficon-zhi:before {
+	width: .34rem;
+	height: .34rem;
+	background-image: url(../img/iconzhi.png);
+	vertical-align: middle;
+	margin-right: .15rem;
+	background-size: 100% auto;
+	position: relative;
+	top: -1px
+}
+
+.share-bg {
+	background: #c7d0d7
+}
+
+.share-wrap {
+	padding: 0 .24rem
+}
+
+.white-block {
+	width: .44rem;
+	height: .93rem;
+	background: #fff
+}
+
+.share-top {
+	position: relative
+}
+
+.share-top .share-logo {
+	display: block;
+	margin: 0 auto;
+	width: 2.54rem;
+	height: auto;
+	position: absolute;
+	left: 50%;
+	top: .15rem;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%)
+}
+
+.share-top .fl {
+	margin-left: .38rem
+}
+
+.share-top .fr {
+	margin-right: .38rem
+}
+
+.share-sub-top {
+	margin-top: .72rem
+}
+
+.share-sub-top .white-block {
+	height: .68rem
+}
+
+.share-main {
+	border-radius: .2rem;
+	background: #fff;
+	padding: 1.18rem 6.4102% .56rem;
+	position: relative;
+	box-shadow: 0 5px 6px rgba(135, 135, 135, .2);
+	z-index: 10
+}
+
+.share-main .user-avatar {
+	width: 1.48rem;
+	height: 1.48rem;
+	border-radius: 100%;
+	border: .06rem solid #fff;
+	position: absolute;
+	left: 50%;
+	top: -.74rem;
+	margin-left: -.74rem;
+	box-shadow: 0 5px 6px rgba(135, 135, 135, .2)
+}
+
+.share-main .trip-top {
+	padding: 0 .64rem;
+	line-height: .28rem
+}
+
+.share-main .trip-top .bike-num {
+	font-size: .26rem;
+	color: #3c3c3c
+}
+
+.share-main .trip-top .bike-num span {
+	font-size: .28rem
+}
+
+.share-main .trip-top .trip-date {
+	font-size: .2rem;
+	color: #3c3c3c;
+	font-weight: 700
+}
+
+.share-main .title-data {
+	width: 100%;
+	height: .53rem;
+	background: url(../img/linetitle.png) no-repeat center;
+	background-size: contain;
+	margin: .42rem auto
+}
+
+.trip-metas {
+	text-align: center
+}
+
+.trip-metas .trip-block {
+	width: 33.3333%;
+	float: left
+}
+
+.trip-metas .trip-block .trip-data {
+	font-size: .44rem;
+	line-height: 1
+}
+
+.trip-metas .trip-block .meta-icon {
+	display: block;
+	height: .45rem;
+	margin: .18rem 0;
+	text-indent: -9999px
+}
+
+.trip-metas .trip-block .icon-time {
+	background: url(../img/icontime.png) no-repeat center;
+	background-size: .44rem auto
+}
+
+.trip-metas .trip-block .icon-leaf {
+	background: url(../img/iconleaf.png) no-repeat center;
+	background-size: .42rem auto
+}
+
+.trip-metas .trip-block .icon-fire {
+	background: url(../img/iconfire.png) no-repeat center;
+	background-size: .45rem auto
+}
+
+.trip-metas .trip-block .icon-info {
+	font-size: .22rem;
+	color: #151515
+}
+
+.share-main .title-record {
+	width: 100%;
+	height: .52rem;
+	background: url(../img/linetitle1.png) no-repeat center;
+	background-size: contain;
+	margin: .42rem auto
+}
+
+.share-main .qztext {
+	font-size: .3rem;
+	color: #838383;
+	line-height: 1
+}
+
+.share-main .linebar {
+	width: 2px;
+	height: .27rem;
+	background: #a9bbc8;
+	margin: .21rem 0 .2rem .15rem
+}
+
+.share-main:after, .share-main:before {
+	position: absolute;
+	width: .44rem;
+	height: .58rem;
+	background: #fafafb;
+	content: '';
+	top: 100%;
+	z-index: 1
+}
+
+.share-main:before {
+	left: .38rem
+}
+
+.share-main:after {
+	right: .38rem
+}
+
+.share-wrap .share-dl {
+	display: block;
+	width: 3.65rem;
+	height: .9rem;
+	line-height: .9rem;
+	color: #fff;
+	font-size: .3rem;
+	text-align: center;
+	background: #018fd7;
+	box-shadow: 0 3px 6px rgba(135, 135, 135, .4);
+	margin: .32rem auto 0;
+	border-radius: .5rem
+}
+
+.share-wrap .share-btmpic {
+	width: 6.84rem;
+	height: 1.62rem;
+	background: url(../img/picride.png) no-repeat center bottom;
+	background-size: contain
+}
+
+@media ( max-width :750px) {
+	html {
+		font-size: 100px
+	}
+}
+
+@media ( max-width :600px) {
+	html {
+		font-size: 80px
+	}
+}
+
+@media ( max-width :480px) {
+	html {
+		font-size: 64px
+	}
+}
+
+@media ( max-width :420px) {
+	html {
+		font-size: 56px
+	}
+}
+
+@media ( max-width :414px) {
+	html {
+		font-size: 55.2px
+	}
+}
+
+@media ( max-width :375px) {
+	html {
+		font-size: 50px
+	}
+	.share-main .linebar {
+		width: 1px
+	}
+}
+
+@media ( max-width :360px) {
+	html {
+		font-size: 48px
+	}
+}
+
+@media ( max-width :320px) {
+	html {
+		font-size: 42.67px
+	}
+}
+
+.coupon-wrap .inner .coupon-money b {
+    font-size: 2.8rem;
+    color: #fff;
+    font-weight: 400;
+    line-height: 1;

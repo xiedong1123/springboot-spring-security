@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jsrsasign-latest-all-min.js"></script>
+
+<script type="text/javascript">
+
+function doSign(){
+	var privateKey = '-----BEGIN PRIVATE KEY-----'
+		+'MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBANv2fgazJfRDQK8QzP6QG+gJJXKy67qqH8xFHW77BOCQqUeyLrZ+6uQ4AZ957z5qJtPi5ls4Ea29V/tB40SAA9wv3NE283kUtoxAkKrg4535C2X4gAG7yx0o9R/pM+2XOID06Nue+ub3Rksk3EIroJomcC2OTOHNDeUPr4InoIXtAgMBAAECgYBjusS1IPCqaPug5EsteAVPFSaHdJvwjEXShdusf99cOfqmaSFI2Q6C3unNdqmEcPidxRiQb0GEtn53iw4R9sDIcqiaL3PT9Z1xJV9WEFGhe/Kp/ZYzKRjatKwGTKKOCmlNUtIioEk2LGxIzj+rYrP8sDWart47RTFAgBMBO3WNgQJBAP7RGGmeL9Iy3ys95yGOaSDnoWhf75wQQpxIAtcWcLLEfqDjnRa9ucTR2TtCfUDid7k7lca7kFvIbocO/L755VECQQDc+/ctduQ9WakYjv3aY1ZlhKzVdf66XDS0sohuWFNf74o6P2dHm20BorvhXDTLUaLzT7CAe28EBdCJY7Ov5N/dAkEAzi4Z9rvMLeSDttVrwzcb0Ugazf1yP3DYtON/iNHbdoqPe1cwsEnrmlnBz7VI68tS3EpeMmNptxpCdH2n/E7vQQJAYqeyP//WAXWnwikEN50lkwjaSCn3YKeNeCZENk8EWc4M/dgUealvzs0h54hMoYB+qPUorRNuCnO2F8AFFj+tmQJBAKQ0D6h/BGf6et11YnUw6tvmKHuM1NFnZkyWAhJDdmGIIdO4wOwEYMLqLqN8bqtMd6d6paBzlqGVxSVAf1mIUa4='
+		+'-----END PRIVATE KEY-----';
+	
+         var prvKey = KEYUTIL.getRSAKeyFromPlainPKCS8PEM(privateKey);
+         var sig = new KJUR.crypto.Signature({"alg": "MD5withRSA", "prov": "cryptojs/jsrsa"}); // alg为MD5WithRSA，这个还有个常见的是SHA1WithRSA，不过貌似支付宝是用的MD5，所以我们公司用的也是MD5，也许java默认的就是这个格式。  
+         sig.initSign(prvKey);  // 设置key  
+         var hSig = sig.signString('{"limit":"20","page":"1"}');  // 签名  
+         hSig = hex2b64(hSig);
+         console.log(hSig);
+         return hSig;
+}
+
+</script>
+</head>
+<body>
+    <button onclick="doSign()">xxxxxxxxxxxxxxxxxxxx</button>
+</body>
+</html>

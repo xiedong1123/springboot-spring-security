@@ -1,0 +1,183 @@
+@charset "utf-8";
+html{font-size: 100px;}
+html,body{height: 100%;position: relative;}
+body{margin:0;padding: 0;font-family:"PingFang SC",STHeiti,Microsoft YaHei,Helvetica,Arial,sans-serif;max-width:750px;font-size:0.24rem;margin:0 auto;background: #f4f4f4;}
+* {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;max-width: 100%;}
+*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+a{text-decoration: none;}
+[class*=ficon-]:before {
+  content: "";
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.ficon-cwechat:before {
+  width: 0.42rem;
+  height: 0.34rem;
+  background-image: url("../img/iconcwechat.png");
+  vertical-align:bottom;
+  margin-right:0.16rem;
+  background-size:contain;
+}
+.ficon-ctel:before {
+  width: 0.42rem;
+  height: 0.36rem;
+  background-image: url("../img/iconctel.png");
+  vertical-align:bottom;
+  margin-right:0.16rem;
+  background-size:contain;
+}
+.ficon-chome:before {
+  width: 0.42rem;
+  height: 0.34rem;
+  background-image: url("../img/iconchome.png");
+  vertical-align:bottom;
+  margin-right:0.16rem;
+  background-size:contain;
+}
+.tipBox{
+	background:#008fd7;
+	padding: 0.2rem 0;
+	position: relative;
+}
+.topTip{
+	width:78.666%;
+	margin:0 auto;
+	border:0.1rem solid #006ea5;
+}
+.topTip p{
+	font-size: 0.28rem;
+	line-height: 1.2857;
+	color:white;
+	padding:0.15rem 0.38rem 0.2rem;
+	margin:0;
+}
+.cbearblock{
+	position: absolute;
+	width:1.18rem;
+	height: 1rem;
+	background:url(../img/beartel.png) no-repeat center;
+	background-size: contain;
+	bottom:0.26rem;
+	right:0.28rem;
+}
+.cInner{
+	width:94.666%;
+	margin:0 auto;
+	position: relative;
+	top:-0.38rem;
+}
+.circleBlock{
+	border-radius: 0.1rem;
+	background:white;
+	box-shadow: 0 5px 6px rgba(135,135,135,0.2);
+}
+.warmTip{
+	padding:0.36rem;
+	position: relative;
+	margin-bottom: 0.28rem;
+}
+.warmTip:before,.warmTip:after{
+	width:0.35rem;
+	height: 0.71rem;
+	background:url(../img/ring1.png) no-repeat center;
+	background-size: contain;
+	position: absolute;
+	content:"";
+}
+.warmTip:before{
+	left:0.76rem;
+	bottom:-0.49rem;
+}
+.warmTip:after{
+	background-image: url(../img/ring2.png);
+	right:0.76rem;
+	bottom:-0.49rem;
+}
+.contactInner{
+	width:92.957%;
+	margin:0 auto;
+}
+.contactInner b{
+	font-weight: normal;
+	font-size: 0.34rem;
+	color:#7a7a7a;
+}
+.contactInner ul{
+	list-style: none;
+	padding: 0;
+}
+.contactInner li{
+	border-bottom: 1px solid #d1d1d1;
+	font-size: 0.24rem;
+	color:#7a7a7a;
+	padding:0.36rem 0;
+	position: relative;
+}
+.contactInner li:last-child{
+	border-bottom: 0 none;
+}
+.contactInner li em{
+	font-size: 0.24rem;
+	color:#7a7a7a;
+	display: block;
+	margin-left: 1.8rem;
+	font-style: normal;
+}
+.cbtna{
+	position: absolute;
+	width:1.6rem;
+	height: 0.56rem;
+	border:1px solid #008fd7;
+	font-size: 0.26rem;
+	text-align: center;
+	line-height: 0.56rem;
+	border-radius: 0.3rem;
+	right:0.1rem;
+	top:0.36rem;
+	color:#008fd7;
+	font-weight: normal;
+}
+.sitelink{
+	font-size: 0.34rem;
+	color:#7a7a7a;
+	text-decoration:underline;
+	font-weight: normal;
+}
+.cCopyright{
+	color:#7a7a7a;
+	font-size:0.28rem;
+	text-align: center;
+	position: relative;
+	top:-0.18rem;
+}
+@media (max-width:750px) {
+  html{font-size: 100px;}
+}
+@media (max-width:700px) {
+  html{font-size: 93.333333px;}
+}
+@media (max-width:650px) {
+  html{font-size:86.6666666px;}
+}
+@media (max-width:600px) {
+  html{font-size:80px;}
+}
+@media (max-width:550px) {
+  html{font-size: 73.333333px;}
+}
+@media (max-width:480px) {
+  html{font-size: 64px;}
+}
+@media (max-width:414px) {
+  html{font-size: 55.2px;}
+}
+@media (max-width:375px) {
+  html{font-size: 50px;}
+}
+@media (max-width:360px) {
+  html{font-size:48px;}
+}
+@media (max-width:320px) {
+  html{font-size:43px;}
+}

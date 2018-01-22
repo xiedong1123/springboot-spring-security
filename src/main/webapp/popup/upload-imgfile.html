@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+<!-- *******************【jQuery】**********************-->
+<script type="text/javascript"
+	src="../static/my/mylayui/js/jquery-3.1.1.min.js"></script>
+<!-- <script type="text/javascript" src="../static/common/common.js"></script> -->
+<!-- *******************【layUI\mylayUI】**********************-->
+<link type="text/css" href="../static/layui/css/layui.css"
+	rel="stylesheet">
+<link type="text/css" href="../static/my/mylayui/css/style.css"
+	rel="stylesheet">
+<script type="text/javascript" src="../static/layui/layui.js"></script>
+<link type="text/css" href="../static/my/css/my.css?v=7"
+	rel="stylesheet">
+<link type="text/css" href="popup-style.css?v=332" rel="stylesheet">
+</head>
+
+<style>
+</style>
+
+<body>
+	<div class="popup-container ad-credit">
+		<form class="layui-form" action="">
+
+			<div class="layui-form-item layui-form-text">
+				<label class="layui-form-label">上传图片</label>
+				<div class="layui-input-block">
+					<div id="localImag"><img id="preview" src="http://blog.chuangling.net/Public/images/top.jpg" width="150" height="180" style="display: block; width: 380px; height: 180px;"></div>
+					<a href="javascript:;" class="a-upload"> <input type="file"
+						name="" id="doc" onchange="javascript:setImagePreview();">选择上传文件
+					</a>
+					<input type="button" value="上传图片"  class="a-upload sub-img"/>
+				</div>
+			</div>
+			<!-- <div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn layui-btn-small" lay-submit
+						lay-filter="formDemo">提交</button>
+					<button type="reset"
+						class="layui-btn layui-btn-primary layui-btn-small">重置</button>
+				</div>
+			</div> -->
+		</form>
+	</div>
+
+
+
+	<script>
+	//下面用于图片上传预览功能
+	function setImagePreview(avalue) {
+	var docObj=document.getElementById("doc");
+	 
+	var imgObjPreview=document.getElementById("preview");
+	if(docObj.files &&docObj.files[0])
+	{
+	//火狐下，直接设img属性
+	imgObjPreview.style.display = 'block';
+	imgObjPreview.style.width = '150px';
+	imgObjPreview.style.height = '180px'; 
+	//imgObjPreview.src = docObj.files[0].getAsDataURL();
+	 
+	//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+	imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+	}
+	else
+	{
+	//IE下，使用滤镜
+	docObj.select();
+	var imgSrc = document.selection.createRange().text;
+	var localImagId = document.getElementById("localImag");
+	//必须设置初始大小
+	localImagId.style.width = "150px";
+	localImagId.style.height = "180px";
+	//图片异常的捕捉，防止用户修改后缀来伪造图片
+	try{
+	localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+	localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+	}
+	catch(e)
+	{
+	alert("您上传的图片格式不正确，请重新选择!");
+	return false;
+	}
+	imgObjPreview.style.display = 'none';
+	document.selection.empty();
+	}
+	return true;
+	}
+	
+		layui.use('form', function() {
+			var form = layui.form();
+
+			//各种基于事件的操作，下面会有进一步介绍
+			form.on('select(test)', function(data) {
+				console.log(data.elem); //得到select原始DOM对象
+				console.log(data.value); //得到被选中的值
+				console.log(data.othis); //得到美化后的DOM对象
+			});
+		});
+	</script>
+
+
+</body>
+
+</html>

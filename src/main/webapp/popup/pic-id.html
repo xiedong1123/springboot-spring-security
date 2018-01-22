@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<!-- *******************【jQuery】**********************-->
+	<script type="text/javascript" src="../static/my/mylayui/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../static/common/common.js"></script>
+	<!-- *******************【layUI\mylayUI】**********************-->
+	<link type="text/css" href="../static/layui/css/layui.css" rel="stylesheet">
+	<link type="text/css" href="../static/my/mylayui/css/style.css" rel="stylesheet">
+	<script type="text/javascript" src="../static/layui/layui.js"></script>
+	<script type="text/javascript" src="../static/plugin/fs_forse.js"></script>
+	<link type="text/css" href="../static/my/css/my.css" rel="stylesheet">
+	<link type="text/css" href="fsgallery.css?v=781145" rel="stylesheet">
+	<link type="text/css" href="popup-style.css?v=2" rel="stylesheet">
+</head>
+
+<style>
+</style>
+<body>
+	<div class="pop-photo popup-container">
+		<div class="layui-item-new-form layui-popup-item clear-border">
+			<h3>基本信息</h3>
+			<div class="layui-form">
+				<table class="layui-table">
+					<colgroup>
+						<col width="">
+						<col width="">
+						<col width="">
+						<col width="">
+						<col width="80">
+						<col width="200">
+					</colgroup>
+					<thead>
+						<tr>
+							<th class="qwe">姓名</th>
+							<th>头像</th>
+							<th>手机号</th>
+							<th>城市</th>
+							<th>注册时间</th>
+							<th>地址</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>贤心</td>
+							<td><img src="img01.jpg" alt=""  style="width:70px; height:70px;border-radius:50%;"/></td>
+							<td>18990909090</td>
+							<td>成都</td>
+							<td>2017-01-12 12:30:00</td>
+							<td>
+								<ul class="thumbnails gallery0" id="">
+						            <li class="span3">
+						              <!--   <a href="img/1.jpg"> -->
+						                    <img src="1_mini.jpg" alt="" class="fs_img_s" />
+						              <!--   </a> -->
+						            </li>
+						            <li class="span3">
+						                <!-- <a href="img/2.jpg"> -->
+						                    <img src="2_mini.jpg" alt="" class="fs_img_s" />
+						                <!-- </a> -->
+						            </li>
+						            <li class="span3">
+						              <!--   <a href="img/3.jpg"> -->
+						                    <img src="3_mini.jpg" alt="" class="fs_img_s" />
+						              <!--   </a> -->
+						            </li>
+						            <li class="span3">
+						                <!-- <a href="img/4.jpg"> -->
+						                    <img src="4_mini.jpg" alt="" class="fs_img_s" />
+						                <!-- </a> -->
+						            </li>
+						        </ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="layui-item-new-form layui-popup-item clear-border">
+			<h3>照片（请选择需要作为工单佐证的照片）</h3>
+			<div class="photo-container gallery1">
+				<div class="img-box">
+					<img src="324.jpg" class="fs_img_l">
+					<div class="img-delete-icon">
+						<b style="color:white;font-weight:500;font-size:32px;line-height:10px">-</b>
+					</div>
+				</div>
+				<div class="img-box">
+					<img src="2344.jpg" class="fs_img_l">
+					<div class="img-delete-icon">
+						<b style="color:white;font-weight:500;font-size:32px;line-height:10px">-</b>
+					</div>
+				</div>
+				<div class="img-box">
+					<img src="112.jpg" class="fs_img_l">
+					<div class="img-delete-icon">
+						<b style="color:white;font-weight:500;font-size:32px;line-height:10px">-</b>
+					</div>
+				</div>
+				<div class="img-box">
+					<img src="113.jpg" class="fs_img_l">
+					<div class="img-delete-icon">
+						<b style="color:white;font-weight:500;font-size:32px;line-height:10px">-</b>
+					</div>
+				</div>
+				<div class="add-container">
+					<i class="layui-icon" style="cursor:pointer;font-size: 70px; color: rgb(200,200,200);line-height:100px">&#xe654;</i> 
+				</div>
+			</div>
+		</div>
+		<br><br>
+		<div class="layui-item-new-form layui-popup-item clear-border" style="clear:both">
+			<h3>照片（请选择需要作为工单佐证的照片）</h3>
+			<div class="photo-container gallery2">
+				<div class="img-box">
+					<img src="3_mini.jpg" class="fs_img_l">
+					<div class="img-choose-icon chooseIconUnchecked">
+						<i class="layui-icon" style="display:none;cursor:pointer;font-size: 14px;margin:1px 0px 0px -4px;color: white">&#xe618;</i>
+					</div>
+				</div>
+				<div class="img-box">
+					<img src="2_mini.jpg" class="fs_img_l">
+					<div class="img-choose-icon chooseIconUnchecked">
+						<i class="layui-icon" style="display:none;cursor:pointer;font-size: 14px;margin:1px 0px 0px -4px;color: white">&#xe618;</i>
+					</div>
+				</div>
+				<div class="img-box">
+					<img src="1_mini.jpg" class="fs_img_l">
+					<div class="img-choose-icon chooseIconUnchecked">
+						<i class="layui-icon" style="display:none;cursor:pointer;font-size: 14px;margin:1px 0px 0px -4px;color: white">&#xe618;</i>
+					</div>
+				</div>
+				<div class="img-box">
+					<img src="4_mini.jpg" class="fs_img_l">
+					<div class="img-choose-icon chooseIconUnchecked">
+						<i class="layui-icon" style="position:absolute;z-index:2000;display:none;cursor:pointer;font-size: 14px;margin:1px 0px 0px -4px;color: white">&#xe618;</i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+  
+  <script>
+  $(function(){
+	  	layui.use('form');
+		$("#gallery img").each(function(index, el) {
+	        var numsrc = $(this).attr('src');
+	        $(this).wrap('<a href=""> </a>')
+	        $(this).parent().attr('href',numsrc);
+	    });
+		
+		//图片点击删除
+		$('body').delegate(".img-delete-icon","click",function(){
+			$(this).parent().remove();
+			$(".fs_gallery").remove();
+		    $('.gallery1 img').fsgallery({
+		      loop: false,
+		          auto: true,
+		          pause: 4000,
+		          speed: 400,
+		          swipeThreshold: 10,
+		          mode: 'slide',
+		            useCSS: true,
+		            easing: 'linear', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+		            speed: 1000,
+		    });
+		}); 
+		//图片点击添加
+		$(".add-container").on("click",function(){
+			$(this).prev().after("<div class='img-box'>"+
+									"<img src='1_mini.jpg' class='fs_img_l'>"+
+									"<div class='img-delete-icon'>"+
+										"<b style='color:white;font-weight:500;font-size:32px;line-height:10px'>-</b>"+
+									"</div>"+
+								 "</div>");
+			
+			$(".fs_gallery").remove();
+		    $('.gallery1 img').fsgallery({
+		      loop: false,
+		          auto: false,
+		          pause: 4000,
+		          speed: 400,
+		          swipeThreshold: 10,
+		          mode: 'slide',
+		            useCSS: true,
+		            easing: 'linear', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+		            speed: 1000,
+		    });
+		});
+		//图片点击选中js
+		$(".chooseIconUnchecked").click(function(){
+			if($(this).hasClass("chooseIconChecked")){
+				$(this).removeClass("chooseIconChecked");
+	  			$(this).find("i").css("display","none");
+	  			$(this).css("background","transparent");
+	  			$(this).css("border","1px solid white");
+			}else{
+	  			$(this).addClass("chooseIconChecked");
+	  			$(this).find("i").css("display","block");
+	  			$(this).css("background","#09BB07");
+	  			$(this).css("border","none");
+			}
+		});
+		
+		/* $(".chooseIconChecked").click(function(){
+			
+		}) */
+  })
+  
+  window.onload = function(){
+	  function test(){
+			alert(121312);
+		}
+		$(".qwe").click(function(){
+			$(".pop-photo").append("<button onclick='test()'>qwewqe</button>");
+		})
+  }
+</script>
+  		
+
+
+</body>
+</html>

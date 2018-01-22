@@ -1,0 +1,9 @@
+.pagewrap{padding:0.2rem;}
+.pagewrap hr{height: 1px;border:0 none;border-top:1px solid #333;}
+.pagetitle{margin:0 0 10px;font-size: 20px;}
+.pagewrap ol{padding-left: 0.4rem;font-size: 0.3rem;}
+.pagewrap ol li{line-height:1.6;}
+@media (max-width:375px) {
+  .pagewrap ol{font-size: 14px;}
+  .pagewrap ol{padding-left:20px;}
+}

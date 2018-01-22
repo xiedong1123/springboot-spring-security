@@ -1,0 +1,42 @@
+.color-red{
+	color:#FF5722;
+}
+.pop-top{
+	padding:20px 20px;
+}
+.pop-content{
+	padding:20px 20px;
+	border-top: 2px solid #DCDEDD;
+	background-color:#F8FAF9;
+	height:80%;
+}
+.pop-input{
+	padding: 0px 30px 0px 10px;
+    cursor: pointer;
+    height: 32px !important;
+    line-height: 32px !important;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    border-radius: 2px;
+    width:162px;
+}
+.fl{
+	float:left;
+}
+.layout-form-label{
+	line-height:32px;
+	float:left;
+	margin-right:20px;
+}
+
+
+
+.layout-mgr-30{
+	margin-right:30px;
+}
+.layout-mgt-10{
+	margin-top:10px;
+}
+.layout-mgf-40{
+	margin-left:-40px;
+}

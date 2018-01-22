@@ -1,0 +1,30 @@
+@charset "utf-8";
+body {
+	background-color: #ffffff;
+}
+#container{
+    padding: 3% 4% 4%;
+}
+#header{
+    border-bottom: 1px solid #999999;
+    line-height: 35px;
+    margin-bottom: 4%;
+}
+p{
+    font-size: 14px;
+    line-height: 26px;
+    margin-bottom: 4%;
+}
+table{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse:collapse;    
+}
+table th{
+    font-weight: normal;
+    text-align: left;
+}
+table th,table td{
+    border: 1px solid #999999;
+    padding:2%;
+}

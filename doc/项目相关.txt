@@ -1,0 +1,24 @@
+一:框架中集成技术
+
+1.spring boot + spring-security + mybatis + gradle
+
+2.spring 缓存整合redis 
+
+3.支持web的多机器部署，(spring session  + redis) session共享
+
+4.分布式锁
+
+5.图片处理
+
+   5.1 web页面实现懒加载(jQuery-lazyload)
+
+6.安全：
+ xss(完成) rsa(密码明文传输)
+
+
+
+二:框架中现存在问题
+
+1.layui  + ztree 使用 导致同一个接口被调用两次
+
+2.权限控制粒度

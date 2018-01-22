@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+<!-- *******************【jQuery】**********************-->
+<script type="text/javascript"
+	src="../static/my/mylayui/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../static/common/common.js"></script>
+<!-- *******************【layUI\mylayUI】**********************-->
+<link type="text/css" href="../static/layui/css/layui.css"
+	rel="stylesheet">
+<link type="text/css" href="../static/my/mylayui/css/style.css"
+	rel="stylesheet">
+<script type="text/javascript" src="../static/layui/layui.js"></script>
+<link type="text/css" href="../static/my/css/my.css?v=7"
+	rel="stylesheet">
+<link type="text/css" href="popup-style.css?v=7" rel="stylesheet">
+</head>
+
+<style>
+</style>
+<body>
+	<div class="popup-container ad-credit">
+		<form class="layui-form" action="">
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">优惠券类型</label>
+				<div class="layui-input-block">
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">骑行券</option>
+						<option value="1">现金券</option>
+						<option value="1">折扣券</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">优惠券ID</label>
+				<div class="layui-input-block">
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">北京</option>
+						<option value="1">上海</option>
+						<option value="2">广州</option>
+						<option value="3">深圳</option>
+						<option value="4">杭州</option>
+						<option value="0">北京</option>
+						<option value="1">上海</option>
+						<option value="2">广州</option>
+						<option value="3">深圳</option>
+						<option value="4">杭州</option>
+						<option value="0">北京</option>
+						<option value="1">上海</option>
+						<option value="2">广州</option>
+						<option value="3">深圳</option>
+						<option value="4">杭州</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">数量</label>
+					<div class="layui-input-inline">
+						<input type="text" name="title" required  lay-verify="required" placeholder="必填，整数" autocomplete="off" class="layui-input">
+					</div>
+					<label class="layui-form-label layui-shot">张</label>
+				</div>
+			</div>
+
+
+			<div class="layui-form-item layui-form-text">
+				<label class="layui-form-label">赠送原因</label>
+				<div class="layui-input-block">
+					<textarea name="desc" rows="3" cols="20" placeholder="请输入内容"
+						class="layui-textarea"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn layui-btn-small" lay-submit lay-filter="formDemo">提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary layui-btn-small">重置</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+
+	<script>
+		layui.use('form')
+	</script>
+
+
+</body>
+</html>

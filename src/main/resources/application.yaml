@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active:
+    #dev - 开发环境   prd - 生产环境    stg - 演示or测试环境
+    - dev

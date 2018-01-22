@@ -1,0 +1,92 @@
+html {
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+body {
+  position: relative;
+  padding-bottom: 160%;
+  background: url("../img/ranking-bg.jpg") no-repeat top center #159cdb !important;
+  background-size: 100%;
+}
+
+.logo-view {
+  padding: 13px 0 19px;
+}
+
+.logo {
+  margin: 0 auto;
+  width: 4.79rem;
+  height: 1.14rem;
+  background: url("../img/ranking-logo.png") no-repeat center;
+  background-size: 100%;
+}
+
+.avatar {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  background-color: #fff;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.avatar-view {
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.info {
+  padding-bottom: 80px;
+  color: #fff;
+  text-align: center;
+  font-size: 0.36rem;
+}
+
+.info label {
+  color: #fae554;
+  font-size: 1.6rem;
+}
+
+.footer-fixed {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 37px 0 15px;
+  background: #fff;
+  text-align: center;
+}
+
+.footer-fixed .span {
+  color: #159cdb;
+  font-size: 0.28rem;
+}
+
+.footer-fixed .btn-download {
+  margin-bottom: 0.42rem;
+}
+
+.btn-download {
+  display: inline-block;
+  padding: 13px 24px;
+  color: #fff;
+  font-size: 0.30rem;
+  background: #008fd7;
+  border-radius: 200px;
+}
+
+.btn-download:before {
+  display: inline-block;
+  margin-right: 0.31rem;
+  width: 0.32rem;
+  height: 0.4rem;
+  background: url("../img/download.png") no-repeat center center;
+  background-size: 100%;
+  vertical-align: middle;
+  content: "";
+}

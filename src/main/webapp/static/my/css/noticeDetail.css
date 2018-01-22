@@ -1,0 +1,5 @@
+.articleWrap{padding: 0.34rem 0.24rem 0;}
+.articleWrap h1{font-size:0.38rem;color: #3a3a3a;margin-top: 0;margin-bottom: 0.22rem;font-weight: normal;line-height: 1;}
+.articleWrap time{color: #9d9d9d;font-size: 0.24rem;line-height: 1;}
+.arcInfos{font-size: 0.3rem;color: #3a3a3a;line-height:1.6;margin-top:0.4rem;}
+.arcInfos img{max-width: 100%;height: auto;display: block;margin:0 auto;}

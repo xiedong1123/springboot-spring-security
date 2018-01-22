@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ccl.core.dao.ISystemDictionaryItemDao">
+	<!-- 结果集 -->
+	<resultMap id="BaseResultMap" type="com.ccl.core.entity.SystemDictionaryItem">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="code" jdbcType="VARCHAR" property="code" />
+		<result column="value" jdbcType="VARCHAR" property="value" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	<!-- 关联查询 -->
+	<!-- 	<association property="dic" javaType="com.ccl.core.entity.SystemDictionary">
+			<id column="sid" property="id" />
+			<result column="scode" property="code" />
+			<result column="sname" property="name" />
+		</association> -->
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		si.id, si.code, si.value, si.name, si.description, si.create_time, si.update_time
+	</sql>
+	
+	
+	<!-- 分页查询（query） -->
+	<select id="findQuery" parameterType="com.ccl.core.query.SystemDictionaryItemQuery" resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List" />
+		FROM sys_systemdictionaryitem si
+		<include refid="where_sql" />
+		 LIMIT #{limit} offset #{pageOffset}
+	</select>
+	<!-- 分页查询（count） -->
+	<select id="findCount" parameterType="com.ccl.core.query.SystemDictionaryItemQuery" resultType="java.lang.Integer">
+		select count(id)
+		from sys_systemdictionaryitem si
+		<include refid="where_sql" />
+	</select>
+
+	<sql id="where_sql">
+		<where>
+			<if test="code !=null and code !=''">si.code=#{code}</if>
+			<if test="value !=null and value !=''">and si.value=#{value}</if>
+		</where>
+	</sql>
+	
+	<!-- 查询（ID） -->
+	<select id="getById" parameterType="long" resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List" />
+		FROM sys_systemdictionaryitem si
+		where si.id =#{id}
+	</select>
+	<!-- 查询（ALL） -->
+	<select id="getAll" resultMap="BaseResultMap" >
+		select <include refid="Base_Column_List" /> from
+		sys_systemdictionaryitem si
+	</select>
+	<!-- 插入（entity） -->
+	<insert id="insert" parameterType="com.ccl.core.entity.SystemDictionaryItem" useGeneratedKeys="true" keyProperty="id">
+		insert into sys_systemdictionaryitem
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        code,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+	</insert>
+	<!-- 修改(entity) -->
+	<update id="update" parameterType="com.ccl.core.entity.SystemDictionaryItem">
+		update sys_systemdictionaryitem
+		<set>
+			<if test="code != null">
+				code = #{code,jdbcType=VARCHAR},
+			</if>
+			<if test="value != null">
+				value = #{value,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				description = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<!-- 删除(ID) -->
+	<delete id="deleteById" parameterType="long">
+		delete from
+		sys_systemdictionaryitem where id=#{id}
+	</delete>
+
+	<select id="getByWhere" parameterType="hashmap" resultMap="BaseResultMap" >
+		SELECT <include refid="Base_Column_List" />
+		FROM sys_systemdictionaryitem si
+		<include refid="where_sql" />
+		ORDER BY si.id
+	</select>
+
+
+</mapper>

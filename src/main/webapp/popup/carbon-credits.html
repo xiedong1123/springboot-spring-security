@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+<!-- *******************【jQuery】**********************-->
+<script type="text/javascript"
+	src="../static/my/mylayui/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../static/common/common.js"></script>
+<!-- *******************【layUI\mylayUI】**********************-->
+<link type="text/css" href="../static/layui/css/layui.css"
+	rel="stylesheet">
+<link type="text/css" href="../static/my/mylayui/css/style.css"
+	rel="stylesheet">
+<script type="text/javascript" src="../static/layui/layui.js"></script>
+<link type="text/css" href="../static/my/css/my.css" rel="stylesheet">
+<link type="text/css" href="popup-style.css?v=2564" rel="stylesheet">
+</head>
+
+<style>
+body {
+	background: #F8FAF9;
+}
+</style>
+<body>
+	<div class="pop-top">
+		<p>
+			当前碳积分：<span class="color-red layout-mgr-30">20</span>
+		</p>
+	</div>
+	<div class="pop-content ad-credit">
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">加减</label>
+					<div class="layui-input-inline">
+						<select name="city" lay-verify="required">
+							<option value=""></option>
+							<option value="0">北京</option>
+							<option value="1">上海</option>
+							<option value="2">广州</option>
+							<option value="3">深圳</option>
+							<option value="4">杭州</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline layout-mgf-40">
+					<div class="layui-input-block">
+						<button class="layui-btn layui-btn-small" lay-submit
+							lay-filter="formDemo">搜索</button>
+						<button type="reset"
+							class="layui-btn layui-btn-primary layui-btn-small">重置</button>
+						<button class="layui-btn layui-btn-primary layui-btn-small">导出</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<div class="layui-form layout-mgt-10">
+			<table class="layui-table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>类型</th>
+						<th>分值</th>
+						<th>时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>9565</td>
+						<td>碳商城消费（预留）</td>
+						<td>-1</td>
+						<td>2017-05-09 12:12:12</td>
+					</tr>
+					<tr>
+						<td>9565</td>
+						<td>碳商城消费（预留）</td>
+						<td>-1</td>
+						<td>2017-05-09 12:12:12</td>
+					</tr>
+					<tr>
+						<td>9565</td>
+						<td>骑行消费</td>
+						<td>5</td>
+						<td>2017-05-09 12:12:12</td>
+					</tr>
+					<tr>
+						<td>9565</td>
+						<td>骑行消费</td>
+						<td>5</td>
+						<td>2017-05-09 12:12:12</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script>
+		layui.use('form')
+	</script>
+
+
+</body>
+</html>

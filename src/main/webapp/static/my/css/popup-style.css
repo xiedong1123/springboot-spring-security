@@ -1,0 +1,180 @@
+.popup-container {
+	padding: 30px 30px 0;
+}
+
+.ad-credit {
+	padding: 30px 30px 0;
+}
+
+.pop-photo .layui-item-new-form {
+	margin-bottom: 20px !important;
+}
+
+.record-item {
+	height: 75px;
+	overflow: auto;
+	text-align: left;
+}
+
+.ad-credit .layui-form-select dl {
+	max-height: 146px !important;
+}
+
+.ad-credit .layui-input-num {
+	line-height: 36px;
+}
+
+.ad-credit .layui-shot {
+	width: 20px !important;
+	padding: 9px 0 !important;
+}
+
+.ad-credit .layui-btn-sm {
+	padding: 0 25px !important;
+}
+
+.color-red {
+	color: #FF5722;
+}
+
+.pop-top {
+	padding: 20px 20px;
+	background: #fff;
+}
+
+.pop-content {
+	padding: 20px 20px;
+	border-top: 1px solid #DCDEDD;
+	background-color: #F8FAF9;
+}
+
+.pop-input {
+	padding: 0px 30px 30px 10px;
+	cursor: pointer;
+	height: 32px !important;
+	line-height: 32px !important;
+	border: 1px solid #e6e6e6;
+	background-color: #fff;
+	border-radius: 2px;
+	width: 162px;
+}
+
+.fl {
+	float: left;
+}
+
+.layout-form-label {
+	line-height: 32px;
+	float: left;
+	margin-right: 20px;
+}
+
+.layout-mgr-30 {
+	margin-right: 30px;
+}
+
+.layout-mgt-10 {
+	margin-top: 10px;
+}
+
+.ad-credit .layout-mgf-40 .layui-input-block {
+	margin: 0;
+}
+
+.popup-div-content {
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+}
+
+/*a  upload */
+.a-upload {
+	padding: 4px 10px;
+	height: 20px;
+	margin-top: 3px;
+	line-height: 20px;
+	position: relative;
+	cursor: pointer;
+	color: #888;
+	background: #fafafa;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow: hidden;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top
+}
+
+.sub-img {
+	height: 30px;
+}
+
+.a-upload  input {
+	position: absolute;
+	font-size: 100px;
+	right: 0;
+	top: 0;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	cursor: pointer
+}
+
+.a-upload:hover {
+	color: #444;
+	background: #eee;
+	border-color: #ccc;
+	text-decoration: none
+}
+
+
+
+.file {
+	position: absolute;
+	left: 0;
+	width: 370px;
+	top: 0;
+	height: 32px;
+	filter: alpha(opacity = 0);
+	opacity: 0;
+	cursor: pointer
+}
+
+.file1 {
+	float: left;
+	margin-left: 8px;
+	z-index: 1;
+	width: 66px;
+	height: 30px;
+	line-height: 30px;
+	cursor: pointer;
+	border: 1px solid #ccc;
+	text-align: center;
+	border-radius: 2px;
+	vertical-align: top;
+	background: #eee;
+	color: #444;
+}
+
+
+.inputstyle {
+	border: 1px solid #ccc;
+	width: 300px;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	background: #FFF;
+	z-index: 99;
+	vertical-align: top;
+}
+.layui-form-label{
+	width:100px;
+}
+
+.layui-input-block{
+	margin-left:130px;
+}
+
+.mt-round{
+    border-radius: 5px !important;
+}
+

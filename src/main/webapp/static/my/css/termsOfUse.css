@@ -1,0 +1,13 @@
+@charset "utf-8";
+#container{
+	padding:4% 4% 6%;	
+}
+h3{
+    margin: 6px 0;
+}
+p{
+    text-indent: 2em;
+    margin: 6px 0;
+    display: inline-block;
+    line-height: 26px;
+}

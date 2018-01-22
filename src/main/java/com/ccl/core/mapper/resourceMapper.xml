@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccl.core.dao.IResourceDao">
+	<!-- 基本结果集 -->
+	<resultMap id="BaseResultMap" type="com.ccl.core.entity.Resource">
+		<id column="id" property="id" />
+		<id column="name" property="name" />
+		<id column="key" property="key" />
+		<id column="parent_id" property="parentId" />
+		<id column="type" property="type" />
+		<id column="url" property="url" />
+		<id column="level" property="level" />
+		<id column="icon" property="icon" />
+		<id column="is_enabled" property="enable" />
+		<id column="create_time" property="createTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="description" property="description" />
+		<id column="btn_html" property="btnHtml" />
+		<id column="childrenIds" property="childrenIds" />
+		<id column="btn_type" property="btnType" />
+		<id column="parentName" property="parentName" />
+	</resultMap>
+	<!-- 关联结果集 -->
+	<resultMap id="LinkesultMap" extends="BaseResultMap"
+		type="com.ccl.core.entity.Resource">
+		<collection property="children" javaType="list"
+			ofType="com.ccl.core.entity.Resource">
+			<result column="childrenId" property="id" />
+			<result column="childrenName" property="name" />
+			<result column="childrenKey" property="key" />
+			<result column="childrenType" property="type" />
+			<result column="childrenUrl" property="url" />
+			<result column="childrenIcon" property="icon" />
+			<result column="childrenEnable" property="enable" />
+			<result column="childrenDescription" property="description" />
+			<result column="childrenBtnHtml" property="btnHtml" />
+			<result column="childrenBtnType" property="btnType" />
+		</collection>
+	</resultMap>
+	<!-- SQL(基础) -->
+	<sql id="comm_sql_1">
+		s.id, s.name, s.key, s.parent_id, s.type, s.url, s.level,
+		s.icon, s.is_enabled, s.create_time, s.update_time, s.description,
+		s.btn_html, s.btn_type
+	</sql>
+	<!-- SQL(联表) -->
+	<sql id="comm_sql_2">
+		sl.id 'childrenId',sl.name 'childrenName',sl.key 'childrenKey',
+		sl.type 'childrenType' ,sl.url 'childrenUrl',sl.icon 'childrenIcon',
+		sl.is_enabled 'childrenEnable', sl.description 'childrenDescription'
+		,sl.btn_html 'childrenBtnHtml',sl.btn_type 'childrenBtnType'
+		FROM
+		sys_resource s
+		LEFT join sys_resource sl on s.id = sl.parent_id
+	</sql>
+
+	<!-- 插入（entity） -->
+	<insert id="insert" parameterType="com.ccl.core.entity.Resource"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO sys_resource
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name != null and name != ''">name,</if>
+			<if test="key != null and key != ''">key,</if>
+			<if test="parent_id != null">parentId,</if>
+			<if test="type != null and type != ''">type,</if>
+			<if test="url != null and url != ''">url,</if>
+			<if test="level != null and level != ''">level,</if>
+			<if test="icon != null and icon != ''">icon,</if>
+			<if test="enable != null">is_enabled,</if>
+			<if test="create_time != null">createTime,</if>
+			<if test="update_time != null">updateTime,</if>
+			<if test="description != null and description != ''">description,</if>
+			<if test="btn_html != null and btn_html != ''">btnHtml,</if>
+			<if test="btn_type != null ">btn_type,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="name != null and name != ''">#{name},</if>
+			<if test="key != null and key != ''">#{key},</if>
+			<if test="parent_id != null">#{parentId},</if>
+			<if test="type != null and type != ''">#{type},</if>
+			<if test="url != null and url != ''">#{url},</if>
+			<if test="level != null and level != ''">#{level},</if>
+			<if test="icon != null and icon != ''">#{icon},</if>
+			<if test="enable != null">#{enable},</if>
+			<if test="create_time != null">#{createTime},</if>
+			<if test="update_time != null">#{updateTime},</if>
+			<if test="description != null and description != ''">#{description},</if>
+			<if test="btnHtml != null and btnHtml != ''">#{btnHtml},</if>
+			<if test="btnType != null ">#{btnType},</if>
+		</trim>
+	</insert>
+
+	<!-- 删除(ID) -->
+	<delete id="deleteById" parameterType="long">
+		DELETE from sys_resource
+		where id=#{id}
+	</delete>
+
+	<!-- 修改（entity） -->
+	<update id="update" parameterType="com.ccl.core.entity.Resource">
+		update sys_resource
+		<set>
+			<if test="key != null">
+				key = #{key,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				parent_id = #{parentId,jdbcType=BIGINT},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="url != null">
+				url = #{url,jdbcType=VARCHAR},
+			</if>
+			<if test="level != null">
+				level = #{level,jdbcType=INTEGER},
+			</if>
+			<if test="icon != null">
+				icon = #{icon,jdbcType=VARCHAR},
+			</if>
+			<if test="enable != null">
+				is_enabled = #{enable,jdbcType=BIT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="btnType != null">
+				btn_type = #{btnType,jdbcType=INTEGER},
+			</if>
+			<if test="btnHtml != null">
+				btn_html = #{btnHtml,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				description = #{description,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+
+	</update>
+
+	<!-- 查询（ID） -->
+	<select id="getById" parameterType="long" resultMap="LinkesultMap">
+		SELECT
+		<include refid="comm_sql_1" />,
+		<include refid="comm_sql_2" />
+		WHERE s.id=#{id}
+	</select>
+
+	<!-- 查询（where） -->
+	<select id="getByWhere" parameterType="hashMap" resultMap="LinkesultMap">
+		SELECT
+		<include refid="comm_sql_1" />,
+		<include refid="comm_sql_2" />
+		WHERE 1=1 and s.is_enabled = 1
+		<if
+			test="(roleId != null and roleId != '') or (userId != null and userId != '' )">
+			and s.id in(
+			select resource_id
+			from sys_role_resource
+			where 1=1
+			<if test="userId != null and userId != '' ">
+				and role_id in (
+				SELECT role_id FROM sys_user_role
+                    WHERE
+                    user_id = #{userId}
+				)
+			</if>
+			<if test="(roleId != null and roleId != '')">
+				and role_id = #{roleId}
+			</if>
+			)
+		</if>
+		<if test="name !=null and name !=''">and s.name=#{name}</if>
+		<if test="key !=null and key !=''">and s.key=#{key}</if>
+		<if test="type !=null and type !=''">and s.type=#{type}</if>
+		<if test="enable !=null ">and s.is_enabled=#{enable}</if>
+		<if test="parentId != null">and s.parent_id = #{parentId}</if>
+	</select>
+
+	<!-- 查询（roleIds） -->
+	<select id="getPermissionsByRoleIds" resultMap="BaseResultMap"
+		parameterType="map">
+		SELECT DISTINCT
+		s.id,s.name, s.key, s.parent_id, s.type,
+		s.url,s.level,s.icon,s.is_enabled,s.create_time,s.update_time,
+		s.description,s.btn_type
+		FROM sys_resource s
+		LEFT JOIN sys_role_resource rr on rr.resource_id = s.id
+		WHERE rr.role_id in (${roleIds})
+	</select>
+
+	<!-- 查询（ALL） -->
+	<select id="getAll" resultMap="BaseResultMap">
+		SELECT
+		<include refid="comm_sql_1" />
+		FROM sys_resource s
+		where s.is_enabled != 0
+	</select>
+	<!-- 查询（分页查询_query） -->
+	<select id="findQuery" parameterType="com.ccl.core.query.ResourceQuery"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="comm_sql_1" />,sr.name parentName
+		FROM sys_resource s left join sys_resource sr on s.parent_id =sr.id
+		<include refid="whereCondition" />
+		<include refid="orderCondition" />
+		LIMIT #{limit} offset #{pageOffset}
+	</select>
+
+	<!-- 查询（分页查询_count） -->
+	<select id="findCount" parameterType="com.ccl.core.query.ResourceQuery"
+		resultType="java.lang.Integer">
+		SELECT count(s.id)
+		FROM sys_resource s
+		<include refid="whereCondition" />
+	</select>
+	<sql id="whereCondition">
+		<where>
+			<if test="id !=null and id !=''">and s.id=#{id}</if>
+			<if test="key !=null and key !=''">and s.key=#{key}</if>
+			<if test="name !=null and name !=''">and s.name like CONCAT('%',#{name},'%')</if>
+		</where>
+	</sql>
+	<sql id="orderCondition">
+		<if test="column != null and column != ''"> ORDER BY ${column} ${sort} </if>
+	</sql>
+
+	<!-- spring security -->
+	<resultMap type="com.ccl.core.entity.Resource" id="resourceDefine">
+		<result column="url" property="url" />
+		<collection property="roles" javaType="list"
+			ofType="com.ccl.core.entity.Role">
+			<result column="roleKey" property="key" />
+		</collection>
+	</resultMap>
+	<select id="loadResourceDefine" resultMap="resourceDefine">
+		select r.url as url, role.key as roleKey from sys_resource r
+		left join sys_role_resource rr on rr.resource_id = r.id
+		left join sys_role role on role.id = rr.role_id
+	</select>
+
+</mapper>

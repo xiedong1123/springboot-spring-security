@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccl.core.dao.IRoleDao">
+
+	<!-- 基本结果集 -->
+	<resultMap id="BaseResultMap" type="com.ccl.core.entity.Role">
+		<id column="id" property="id" />
+		<result column="key" property="key" />
+		<result column="name" property="name" />
+		<result column="is_enabled" property="enable" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="description" property="description" />
+		<result column="resourceIds" property="resourceIds" />
+		<result column="resourceNames" property="resourceNames" />
+	</resultMap>
+
+	<!-- 关联结果集 -->
+	<resultMap id="LinkResultMap" extends="BaseResultMap" type="com.ccl.core.entity.Role">
+		<collection property="resources" javaType="list" ofType="com.ccl.core.entity.Resource">
+			<id column="resourceId" property="id" />
+			<result column="resourceKey" property="key" />
+			<result column="resourceName" property="name" />
+			<result column="resourceType" property="type" />
+			<result column="resourceUrl" property="url" />
+			<result column="resourceEnable" property="enable" />
+		</collection>
+	</resultMap>
+
+	<!-- SQL(基础) -->
+	<sql id="comm_sql_1">
+		r.id,r.key,r.name,r.is_enabled,r.create_time,r.update_time, r.description
+	</sql>
+
+	<!-- SQL(联表_资源) -->
+	<sql id="comm_sql_2">
+		s.id as resourceId, 
+		s.name as resourceName,
+		s.key as resourceKey,
+		s.type as resourceType,
+		s.url as resourceUrl,
+		s.is_enabled as resourceEnable
+	</sql>
+
+	<!-- 插入（entity） -->
+	<insert id="insert" parameterType="com.ccl.core.entity.Role" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO sys_role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="key != null and key != ''">`key`,</if>
+			<if test="name != null and name != ''">`name`,</if>
+			<if test="createTime != null ">create_time,</if>
+			<if test="description != null and description != ''">description,</if>
+			<if test="enable != null ">is_enabled</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="key != null and key != ''">#{key},</if>
+			<if test="name != null and name != ''">#{name},</if>
+			<if test="createTime != null ">#{createTime},</if>
+			<if test="description != null and description != ''">#{description},</if>
+			<if test="enable != null">#{enable}</if>
+		</trim>
+	</insert>
+
+	<!-- 插入（关联数据） -->
+	<insert id="insertRoleAndResource" parameterType="list" useGeneratedKeys="true">
+		INSERT INTO sys_role_resource
+		(
+			role_id, resource_id
+		) values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.roleId},#{item.resourceId})
+		</foreach>
+	</insert>
+	<!-- 删除(关联数据) -->
+	<delete id="deleteRoleAndResource" parameterType="long"> 
+		DELETE from sys_role_resource where role_id = #{roleId}
+	</delete>
+
+	<!-- 修改（entity） -->
+	<update id="update" parameterType="com.ccl.core.entity.Role">
+		UPDATE sys_role
+		<set>
+			<if test="name != null and name != ''">`name` = #{name},</if>
+			<if test="description != null and description != ''">description = #{description},</if>
+			<if test="updateTime != null ">update_time = #{updateTime}</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<!-- 查询（ID） -->
+	<select id="getById" parameterType="long" resultMap="LinkResultMap">
+		SELECT 
+			<include refid="comm_sql_1" />,
+			<include refid="comm_sql_2" />
+		FROM sys_role r
+		LEFT join sys_role_resource rr on rr.role_id = r.id
+		LEFT join sys_resource s on s.id = rr.resource_id
+ 		WHERE r.id = #{id}
+	</select>
+
+	<!-- 查询（where） -->
+	<select id="getByWhere" parameterType="hashMap" resultMap="LinkResultMap">
+		SELECT
+			<include refid="comm_sql_1" />,
+			<include refid="comm_sql_2" />
+		<where>
+			<if test="name !=null and name !=''">and r.name=#{name}</if>
+		</where>
+	</select>
+	
+	<!-- 查询（resourceId） -->
+	<select id="getByResourceId" parameterType="hashMap" resultMap="BaseResultMap">
+		SELECT
+		<include refid="comm_sql_1" />
+		FROM sys_role r
+		LEFT JOIN sys_role_resource rr ON rr.role_id = r.id
+		WHERE rr.resource_id=#{resourceId}
+	</select> 
+
+	<!-- 查询（ALL） -->
+	<select id="getAll" resultMap="BaseResultMap">
+		SELECT
+		<include refid="comm_sql_1" />
+		FROM sys_role r
+	</select>
+
+	<!-- 查询（分页查询_query） -->
+	<select id="findQuery" parameterType="com.ccl.core.query.RoleQuery" resultMap="LinkResultMap">
+		SELECT
+			<include refid="comm_sql_1" />
+		FROM sys_role r
+		<include refid="whereCondition" />
+		
+		<include refid="sortCondition" />
+		
+		LIMIT #{limit} offset #{pageOffset}
+	</select>
+<!-- 	<select id="findQuery" parameterType="com.ccl.core.query.RoleQuery" resultMap="LinkResultMap">
+		SELECT
+			<include refid="comm_sql_1" />,
+			group_concat(s.id) as resourceIds,
+			group_concat(s.name) as resourceNames,
+		FROM sys_role r
+		LEFT join sys_role_resource rr on rr.role_id = r.id
+		LEFT join sys_resource s on s.id = rr.resource_id
+		<include refid="whereCondition" />
+		group by r.id
+		<include refid="sortCondition" />
+		LIMIT #{limit} offset #{pageOffset}
+	</select> -->
+
+	<!-- 查询（分页查询_count） -->
+	<select id="findCount" parameterType="com.ccl.core.query.RoleQuery" resultType="java.lang.Integer">
+		SELECT count(r.id) FROM sys_role r
+					<include refid="whereCondition" />
+	</select>
+	
+	<!-- 查询（key）-->
+	<select id="isExists" parameterType="map" resultType="java.lang.Integer">
+		SELECT 
+			count(r.id)
+			FROM sys_role r
+		<include refid="whereIsExists" />
+	</select> 
+	
+	<sql id="whereIsExists">
+		<where>
+			<if test="key !=null and key !=''">r.key = #{key}</if>
+			<if test="name !=null and name !=''">r.name = #{name}</if>
+		</where>
+	</sql>
+	
+	<sql id="whereCondition">
+		<where>
+			<if test="name !=null and name !=''">and r.name like CONCAT('%',#{name},'%')</if>
+		</where>
+	</sql>
+	
+	<sql id="sortCondition">
+		<if test="column != null and column != ''"> ORDER BY ${column} ${sort} </if>
+	</sql>
+
+</mapper>

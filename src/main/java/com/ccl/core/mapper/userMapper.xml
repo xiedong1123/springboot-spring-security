@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccl.core.dao.IUserDao">
+	<resultMap id="BaseResultMap" type="com.ccl.core.entity.User">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="password" jdbcType="CHAR" property="password" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="city_id" jdbcType="BIGINT" property="cityId" />
+		<result column="is_account_locked" jdbcType="TINYINT" property="isAccountLocked" />
+		<result column="is_enabled" jdbcType="TINYINT" property="isEnabled" />
+		<result column="remark" jdbcType="VARCHAR" property="remark" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<!-- 角色表关联查询 -->
+		<result column="roleIds" property="roleIds" />
+		<result column="roleNames" property="roleNames" />
+		<result column="roleKeys" property="roleKeys" />
+	</resultMap>
+
+	<resultMap id="LinkResultMap" type="com.ccl.core.entity.User"
+		extends="BaseResultMap">
+		<collection property="roles" javaType="list"
+			ofType="com.ccl.core.entity.Role">
+			<id column="roleId" property="id" />
+			<result column="roleKey" property="key" />
+			<result column="roleName" property="name" />
+		</collection>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		u.id, u.username, u.password, u.name, u.mobile, u.city_id,
+		u.is_enabled, u.is_account_locked, u.remark, u.create_time,
+		u.update_time
+	</sql>
+
+	<select id="getById" parameterType="java.lang.Long" resultMap="LinkResultMap">
+		select
+		<include refid="Base_Column_List" />
+		,
+		r.id as roleId,
+		r.key as roleKey,
+		r.name as roleName
+		from
+		sys_user u
+		left join sys_user_role ur on ur.user_id = u.id
+		left join sys_role r on
+		r.id = ur.role_id
+		where u.id = #{id,jdbcType=BIGINT}
+	</select>
+
+	<delete id="deleteById" parameterType="java.lang.Long">
+		delete from sys_user u
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+
+	<insert id="insert" keyColumn="id" keyProperty="id"
+		parameterType="com.ccl.core.entity.User" useGeneratedKeys="true">
+		insert into sys_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="username != null">
+				username,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="mobile != null">
+				mobile,
+			</if>
+			<if test="cityId != null">
+				city_id,
+			</if>
+			<if test="isAccountLocked != null">
+				is_account_locked,
+			</if>
+			<if test="isEnabled != null">
+				is_enabled,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=CHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null">
+				#{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="cityId != null">
+				#{cityId,jdbcType=BIGINT},
+			</if>
+			<if test="isAccountLocked != null">
+				#{isAccountLocked,jdbcType=TINYINT},
+			</if>
+			<if test="isEnabled != null">
+				#{isEnabled,jdbcType=TINYINT},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+
+	<insert id="insertBatch" keyColumn="id" keyProperty="id"
+		parameterType="java.util.List" useGeneratedKeys="true">
+		insert into sys_user (username, password, name,
+		mobile, city_id,
+		is_account_locked,
+		is_enabled, remark, create_time,
+		update_time)
+		values
+		<foreach collection="list" index="index" item="item"
+			separator=",">
+			(#{item.username,jdbcType=VARCHAR},
+			#{item.password,jdbcType=CHAR},
+			#{item.name,jdbcType=VARCHAR},
+			#{item.mobile,jdbcType=VARCHAR}, #{item.cityId,jdbcType=BIGINT},
+			#{item.isAccountLocked,jdbcType=TINYINT},
+			#{item.isEnabled,jdbcType=TINYINT}, #{item.remark,jdbcType=VARCHAR},
+			#{item.createTime,jdbcType=TIMESTAMP},
+			#{item.updateTime,jdbcType=TIMESTAMP})
+		</foreach>
+	</insert>
+
+	<update id="update" parameterType="com.ccl.core.entity.User">
+		update sys_user
+		<set>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=CHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null">
+				mobile = #{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="cityId != null">
+				city_id = #{cityId,jdbcType=BIGINT},
+			</if>
+			<if test="isAccountLocked != null">
+				is_account_locked = #{isAccountLocked,jdbcType=TINYINT},
+			</if>
+			<if test="isEnabled != null">
+				is_enabled = #{isEnabled,jdbcType=TINYINT},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- 查询（分页查询_query） -->
+	<select id="findQuery" parameterType="com.ccl.core.query.UserQuery"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		,
+		group_concat(r.name) as roleNames,
+		group_concat(r.key) as roleKeys,
+		group_concat(r.id) as roleIds
+		from
+		sys_user u
+		left join sys_user_role ur on ur.user_id = u.id
+		left join sys_role r on
+		r.id = ur.role_id
+		<include refid="whereCondition" />
+		group by u.id
+		<include refid="orderCondition" />
+		LIMIT #{limit} offset #{pageOffset}
+	</select>
+
+	<!-- 查询（分页查询_count） -->
+	<select id="findCount" parameterType="com.ccl.core.query.UserQuery"
+		resultType="java.lang.Integer">
+		SELECT count(tmp.id)
+		FROM
+		(
+		SELECT
+		u.id
+		FROM
+		sys_user u
+		LEFT JOIN sys_user_role ur ON ur.user_id = u.id
+		LEFT JOIN sys_role r ON r.id = ur.role_id
+		<include refid="whereCondition" />
+		GROUP BY
+		u.id
+		) tmp
+	</select>
+
+
+	<!-- <resultMap id="SecurityResultMap" type="com.ccl.base.config.security.CustomerUserDetails" 
+		extends="LinkResultMap" /> -->
+	<select id="getByUsernameForSecurity" resultMap="LinkResultMap"
+		parameterType="string">
+		select
+		<include refid="Base_Column_List" />
+		,
+		(SELECT GROUP_CONCAT(intmp.role_id) from sys_user_role intmp where
+		intmp.user_id = u.id) as roleIds,
+		(
+		SELECT
+			GROUP_CONCAT(role.KEY)
+		FROM
+			sys_role role
+		WHERE
+			role.id IN (
+				SELECT
+					role_id
+				FROM
+					sys_user_role urole
+				WHERE
+					urole.user_id = u.id
+			)
+		) AS roleKeys,
+		r.id as roleId,
+		r.key as roleKey,
+		r.name as roleName
+		from
+		sys_user u
+		left join sys_user_role ur on ur.user_id = u.id
+		left join sys_role r on
+		r.id = ur.role_id
+		where u.username = #{username}
+	</select>
+
+	<sql id="whereCondition">
+		<where>
+			<if test="username !=null and username !=''">and u.username like CONCAT('%',#{username},'%')</if>
+			<if test="roleId !=null">and ur.role_id = #{roleId}</if>
+			<if test="isEnabled !=null">and u.is_enabled = #{isEnabled}</if>
+		</where>
+	</sql>
+	<sql id="orderCondition">
+		<if test="column != null and column != '' and sort != null and sort != ''">
+			ORDER BY u.${column} ${sort}
+		</if>
+	</sql>
+
+	<select id="judgeExistOfUser" parameterType="string" resultType="java.lang.Integer">
+		select count(id) from sys_user where username = #{username}
+	</select>
+    
+    <select id="getByUsername" parameterType="string" resultMap="BaseResultMap">
+    
+        select <include refid="Base_Column_List" /> from sys_user u where u.username = #{username}
+    </select>
+
+
+	<insert id="insertUserAndRole" parameterType="list"
+		useGeneratedKeys="true">
+		INSERT INTO sys_user_role
+		(
+		user_id, role_id
+		) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.userId},#{item.roleId})
+		</foreach>
+	</insert>
+
+
+	<delete id="deleteUserAndRole" parameterType="long">
+		delete from
+		sys_user_role where user_id = #{userId}
+
+	</delete>
+</mapper>

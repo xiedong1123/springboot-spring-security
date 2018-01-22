@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccl.core.dao.IOpLogDao">
+	<!-- 基本结果集 -->
+	<resultMap id="BaseResultMap" type="com.ccl.core.entity.OpLog">
+		<id column="id" property="id"/>
+		<result column="yb_key" property="ybKey" />
+		<result column="user_id" property="userId" />
+		<result column="operat_address" property="operatAddress" />
+		<result column="content" property="content" />
+		<result column="create_time" property="createTime"/>
+		<result column="username" property="username"/>
+		<result column="name" property="name"/>
+	</resultMap>
+	
+	<sql id="comm_sql_1">
+	 a.id,a.user_id,a.operat_address,a.content,a.create_time ,u.name,u.username from sys_oplog a LEFT JOIN sys_user u on a.user_id=u.id
+	</sql>
+	
+	<!-- 查询（where） -->
+	<select id="findQuery" parameterType="com.ccl.core.query.OpLogQuery"  resultMap="BaseResultMap">
+		SELECT 
+		<include refid="comm_sql_1" />
+		where 1=1 
+		<if test="startTime !=null and startTime !=''"> and DATE(a.create_time) &gt;=#{startTime} </if>
+		<if test="endTime !=null and endTime !=''"> and DATE(a.create_time) &lt;=#{endTime} </if>
+		<if test="operatAddress !=null and operatAddress !=''"> and a.operat_address like CONCAT ('%',#{operatAddress},'%')</if>
+		<if test="column != null and column != ''">
+			ORDER BY ${column} ${sort}
+		</if>
+		LIMIT #{limit} offset #{pageOffset}
+	</select>
+	<!-- 查询（分页查询_count） -->
+	<select id="findCount" parameterType="com.ccl.core.query.OpLogQuery" resultType="java.lang.Integer">
+		SELECT  COUNT(T.id) FROM (SELECT 
+		<include refid="comm_sql_1" /> WHERE 1=1 
+		<if test="startTime !=null and startTime !=''"> and DATE(a.create_time) &gt;=#{startTime} </if>
+		<if test="endTime !=null and endTime !=''"> and DATE(a.create_time) &lt;=#{endTime} </if>
+		<if test="operatAddress !=null and operatAddress !=''"> and a.operat_address like CONCAT ('%',#{operatAddress},'%')</if>
+		
+		
+		)T
+		
+			
+	
+		
+	</select>
+	
+	
+	<insert id="insert" parameterType="com.ccl.core.entity.OpLog"  keyProperty="id" useGeneratedKeys="true">
+    insert into sys_oplog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="operatAddress != null">
+        operat_address,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="operatAddress != null">
+        #{operatAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+     
+     
+    </trim>
+  </insert>
+</mapper>

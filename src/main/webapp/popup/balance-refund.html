@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+<!-- *******************【jQuery】**********************-->
+<script type="text/javascript"
+	src="../static/my/mylayui/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../static/common/common.js"></script>
+<!-- *******************【layUI\mylayUI】**********************-->
+<link type="text/css" href="../static/layui/css/layui.css"
+	rel="stylesheet">
+<link type="text/css" href="../static/my/mylayui/css/style.css"
+	rel="stylesheet">
+<script type="text/javascript" src="../static/layui/layui.js"></script>
+<script src="../static/common/jquery.validate.min.js"></script>
+<link type="text/css" href="../static/my/css/my.css?v=7"
+	rel="stylesheet">
+<link type="text/css" href="popup-style.css?v=3" rel="stylesheet">
+</head>
+
+<style>
+</style>
+<body>
+	<div class="popup-container ad-credit">
+		<form id="form-balance" class="layui-form" action="">
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">充值金余额</label>
+				<div class="layui-input-block layui-input-num">
+					<span>10.00</span>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">退款金额</label>
+				<div class="layui-input-block">
+					<input type="text" name="title"  
+						placeholder="请输入退款金额，单位元,不能超过充值金额" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">退款方式</label>
+				<div class="layui-input-block">
+					<input type="radio" name="sex" value="支付宝" title="支付宝"> <input
+						type="radio" name="sex" value="银行卡" title="银行卡" checked>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">姓名</label>
+				<div class="layui-input-block">
+					<input type="text" name="username" 
+						placeholder="请输入姓名" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">账号</label>
+				<div class="layui-input-block">
+					<input type="text" name="user" 
+						placeholder="请输入账号，账号对应真实姓名" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+
+			<div class="layui-form-item layui-form-text">
+				<label class="layui-form-label">退款原因</label>
+				<div class="layui-input-block">
+					<textarea name="desc" rows="3" cols="20" placeholder="请输入内容"
+						class="layui-textarea"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn layui-btn-small">提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary layui-btn-small">重置</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+
+	<script>
+		layui.use('form')
+		
+		$(function(){
+			$('#form-balance').validate({
+				rules:{
+					title:{
+						required: true,
+					},
+					username:{
+						required: true,
+					},
+					user:{
+						required: true,
+					},
+					desc:{
+						required: true,
+					}
+				},
+				messages:{
+					title:"请输入退款金额，单位元,不能超过充值金额",
+					username:"请输入姓名",
+					user:"请输入账号",
+					desc:"请输入退款原因"
+				}
+			})
+		})
+	</script>
+
+
+</body>
+</html>

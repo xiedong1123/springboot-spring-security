@@ -1,0 +1,83 @@
+html,body{height: 100%;position: relative;}
+body{margin:0;padding: 0;font-family:"pingfang sc light"}
+* {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.fl{float: left;}
+.fr{float: right;}
+.clear{clear: both;}
+a{text-decoration: none;}
+html{font-size: 100px;}
+body{max-width:750px;font-size:0.24rem;margin:0 auto;background: #f0f1f1;}
+section{position: relative;}
+.btndl{display: block;background:#0b85b6;border-radius: 10px;box-shadow: 0 3px 10px rgba(54,54,54,0.4);border:0 none;width: 100%;padding:0.2rem 0;font-size: 0.3rem;color:white;font-family: "pingfang sc";margin:0.68rem 0 0.33rem;position: relative;z-index: 100;}
+.adword{font-size: 0.3rem;color: #3c3c3c;line-height: 1;text-align: center;position: relative;z-index: 100;}
+[class*=ficon-]:before {
+  content: "";
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.ficon-bike:before {
+  width: 0.4rem;
+  height: 0.35rem;
+  background-image: url("../img/iconbike.png");
+  vertical-align:bottom;
+  margin-left:0;
+  background-size:100% auto;
+}
+.ficon-dl:before {
+  width: 0.32rem;
+  height: 0.4rem;
+  background-image: url("../img/icondl.png");
+  vertical-align:bottom;
+  margin-right:0.3rem;
+  background-size:100% auto;
+}
+.ficon-share:before {
+  width: 0.37rem;
+  height: 0.35rem;
+  background-image: url("../img/iconshare.png");
+  vertical-align:-3px;
+  margin-right:0.1rem;
+  background-size:100% auto;
+}
+.ficon-add:before {
+  width: 0.22rem;
+  height: 0.31rem;
+  background-image: url("../img/iconadd.png");
+  vertical-align:bottom;
+  margin-right:0.15rem;
+  background-size:100% auto;
+}
+.ficon-qi:before {
+  width: 0.34rem;
+  height: 0.34rem;
+  background-image: url("../img/iconqi.png");
+  vertical-align:bottom;
+  margin-right:0.15rem;
+  background-size:100% auto;
+}
+.ficon-zhi:before {
+  width: 0.34rem;
+  height: 0.34rem;
+  background-image: url("../img/iconzhi.png");
+  vertical-align:bottom;
+  margin-right:0.15rem;
+  background-size:100% auto;
+}
+@media (max-width:750px) {
+  html{font-size: 100px;}
+}
+@media (max-width:600px) {
+  html{font-size:80px;}
+}
+@media (max-width:420px) {
+  html{font-size: 56px;}
+}
+@media (max-width:375px) {
+  html{font-size: 50px;}
+  .paydetailinfo span{padding-left:0;}
+}
+@media (max-width:320px) {
+  html{font-size:43px;}
+}

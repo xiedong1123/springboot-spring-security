@@ -1,0 +1,115 @@
+html{font-size: 100px;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+html,body{height: 100%;position: relative;}
+body{margin:0;padding: 0;font-family:"PingFang SC",STHeiti,Microsoft YaHei,Helvetica,Arial,sans-serif;max-width:750px;font-size:0.24rem;margin:0 auto;background: #f4f4f4;}
+* {box-sizing: border-box;}
+*:before,*:after{box-sizing:border-box;max-width: 100%;}
+a{text-decoration: none;}
+/* 甯姪涓績鏍峰紡 */
+.circleBlock{
+	border-radius: 0.1rem;
+	background:white;
+	box-shadow: 0 5px 6px rgba(135,135,135,0.2);
+}
+.helpWrap{
+	width:100%;
+	height: 100%;
+	padding-top:0.3rem;
+	position: relative;
+}
+.topblue{
+	height: 1rem;
+	position: absolute;
+	width:100%;
+	left: 0;
+	top:0;
+	background:#008fd7;
+	border-bottom: 1px solid #d3b254;
+	z-index: 0;
+}
+.helpWrap ul{
+	list-style: none;
+	padding: 0;
+	width: 93.6%;
+	margin:0 auto;
+	position: relative;
+	z-index: 1;
+}
+.helpWrap ul.circleBlock{
+	width:94.666%;
+	padding:0.32rem 0.24rem 0.9rem;
+}
+.helpWrap ul li{
+	border:1px solid #e2e2e2;
+	border-radius:6px;
+	padding:0 0.28rem;
+	margin-bottom: 10px;
+}
+.helpWrap .qaTitle{
+	color:#1f1f1f;
+	font-size: 0.3rem;
+	line-height: 1.2;
+	position: relative;
+	cursor: pointer;
+	padding:0.32rem 0.3rem 0.32rem 0;
+
+}
+.helpWrap .qaTitle:after{
+	position: absolute;
+	right:0;
+	top:50%;
+	content:'';
+	-webkit-transform:translateY(-50%);
+	        transform:translateY(-50%);
+	width:0.26rem;
+	height: 0.15rem;
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAPCAYAAAD6Ud/mAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA39pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpiYTJlYjAyZC0xMDRlLTQ0MjQtOTM3Zi1jNjZjZGQ0NTQyZGMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDg1QkI2MDJGNEUzMTFFNkFDRjE5NUJEQTIyOEE5QzYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDg1QkI2MDFGNEUzMTFFNkFDRjE5NUJEQTIyOEE5QzYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmIxZmM5NWZiLWViNzEtNGNmYS1iNDMxLTM5MmVmNzc4NTcyNSIgc3RSZWY6ZG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmIzMDgwYjljLWJkZTItMTE3OS1hZWVhLTlhNWZmYTU0ZTRkNSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrX8F6MAAAFqSURBVHjavNRPKARhGMfxmbUkJ0qOrnLkLP9qtSX5G+HAkXJykJMrDm7i4KDEQWoLOUgZUQ4OalNKXFYKJUWRP4nvW7+pabK7M2vz1Kfdd96Z93nnned9bcdxrP+IiH47MI2yPI/fgwdsRXVhCeVoRxzXeUgygnkUoMp9oyl8oxpHpuOPSSawoCSP6HUTLWJMySpxiJock5hPMAsbd2hEMuK5wcxgGF+owD7qQiSwNcak2inU48xbDG6soB8fKMUuYgGSmCVaxqjaF0py6a86b2ygC28oMRWD1gxJCrGGIbWTaPAXVCTNwzsa/AXFSCi5P4o0sT61T9CM+3T76Lcw36gFTxpwHQOefvO2m9oSlqo1piqzwiQycawZmk1n9twq5tCpgeO6b0//n7OdDJniVGt+q8oa11LWqn8bbXgNcgRli3NVUcp33SxnN96DnnVB4kr76kAVOYNBfAZ5OBpy19+gKZfj4keAAQA310buogmUKwAAAABJRU5ErkJggg==) no-repeat center;
+	background-size:contain;
+	-webkit-transition: all 0.3s ease-out;
+	transition:all 0.3s ease-out;
+}
+.helpWrap ul li.active .qaTitle:after{
+	-webkit-transform:rotate(180deg);
+	        transform:rotate(180deg);
+}
+.helpWrap .qaAnswer{
+	display: none;
+	border-top:1px dashed #e2e2e2;
+	padding:0.3rem 0 0.28rem;
+	color:#3c3c3c;
+	font-size: 0.28rem;
+	line-height: 1.5;
+}
+.helpWrap ul li.active .qaAnswer{
+	display: block;
+}
+/* 甯姪涓績鏍峰紡缁撴潫 */
+@media (max-width:750px) {
+  html{font-size: 100px;}
+}
+@media (max-width:700px) {
+  html{font-size: 93.333333px;}
+}
+@media (max-width:650px) {
+  html{font-size:86.6666666px;}
+}
+@media (max-width:600px) {
+  html{font-size:80px;}
+}
+@media (max-width:550px) {
+  html{font-size: 73.333333px;}
+}
+@media (max-width:480px) {
+  html{font-size: 64px;}
+}
+@media (max-width:414px) {
+  html{font-size: 55.2px;}
+}
+@media (max-width:375px) {
+  html{font-size: 50px;}
+}
+@media (max-width:360px) {
+  html{font-size:48px;}
+}
+@media (max-width:320px) {
+  html{font-size:43px;}
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--参数：status 指定log4j本身输出日志的级别 -->
+<Configuration status="info">
+	<properties>
+		<property name="LOG_HOME">E:\\\logs</property>
+		<property name="SERVER_NAME">logPro</property>
+	</properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout>
+				<pattern>[%d{yyyy-MM-dd HH:mm:ss} %5p] [%t] [%C.%M]:%L - %m%n
+				</pattern>
+			</PatternLayout>
+		</Console>
+		<!-- 这个会打印出所有的info及以下级别的信息，每天一个文件，文件大于100MB继续拆分 -->
+		<RollingFile name="business"
+			fileName="${LOG_HOME}\${SERVER_NAME}_business.log" filePattern="${LOG_HOME}\${SERVER_NAME}_business_%d{yyyy-MM-dd}_%i.log">
+			<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+			<ThresholdFilter level="info" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss} %5p] [%t] [%C.%M]:%L - %m%n" />
+			<Policies>
+				<!-- 基于时间完成周期性的log文件分割。参数interval:指定两次分割的时间间隔。 单位:以日志的命名精度来确定单位，比如yyyy-MM-dd-HH 
+					单位为小时，yyyy-MM-dd-HH-mm 单位为分钟 modulate：是否对分割时间进行调制。若modulate=true,则分割时间将以0点为边界进行偏移计算。 
+					比如，modulate=true，interval=4h,如果上次分割日志的时间为03:00， 下次分割时间为04:00,之后的封存时间依次为08:00，12:00，16:00 -->
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<!-- 基于大小完成周期性的log文件分割 -->
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+			<!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+		<RollingFile name="monitor" fileName="${LOG_HOME}\${SERVER_NAME}_monitor.log"
+			filePattern="${LOG_HOME}\${SERVER_NAME}_monitor_%d{yyyy-MM-dd-HH-mm}_%i.log">
+			<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+			<ThresholdFilter level="info" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss} %5p] [%t] [%C.%M]:%L - %m%n" />
+			<Policies>
+				<!-- 基于时间完成周期性的log文件分割。参数interval:integer型，指定两次分割之间的时间间隔。 单位:以日志的命名精度来确定单位，比如yyyy-MM-dd-HH 
+					单位为小时，yyyy-MM-dd-HH-mm 单位为分钟 modulate，boolean型，说明是否对分割时间进行调制。若modulate=true,则分割时间将以0点为边界进行 
+					偏移计算。比如，modulate=true，interval=4hours,那么假设上次封存日志的时间为03:00， 则下次封存日志的时间为04:00,之后的封存时间依次为08:00，12:00，16:00 -->
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<!-- 基于大小完成周期性的log文件分割 -->
+				<SizeBasedTriggeringPolicy size="100 KB" />
+			</Policies>
+			<!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<!--日志不输出到根logger中 -->
+		<logger name="monitor" level="info" additivity="false">
+			<appender-ref ref="monitor" />
+		</logger>
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="business" />
+		</Root>
+
+
+		<logger name="java.sql.PreparedStatement" level="info"
+			additivity="true">
+			<AppenderRef ref="Console" />
+		</logger>
+		<logger name="com.ccl" level="info" additivity="false">
+			<AppenderRef ref="Console" />
+		</logger>
+		<logger name="java.sql" level="info" additivity="true">
+			<AppenderRef ref="Console" />
+		</logger>
+	</Loggers>
+</Configuration>  
